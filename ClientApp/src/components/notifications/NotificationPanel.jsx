@@ -83,6 +83,43 @@ export default function NotificationPanel({
 }) {
   const panelRef = useRef(null)
   const [activeTab, setActiveTab] = useState('all') // 'all' | 'unread' | 'deadlines'
+  const [styleOffset, setStyleOffset] = useState({})
+
+  // Viewport edge collision detection to prevent any clipping on mobile, tablet or desktop
+  useEffect(() => {
+    if (!isOpen) {
+      setStyleOffset({})
+      return undefined
+    }
+
+    const clampToViewport = () => {
+      const el = panelRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      const padding = 12
+      let deltaX = 0
+
+      if (rect.left < padding) {
+        deltaX = Math.round(padding - rect.left)
+      } else if (rect.right > window.innerWidth - padding) {
+        deltaX = Math.round(window.innerWidth - padding - rect.right)
+      }
+
+      if (deltaX !== 0) {
+        setStyleOffset({ transform: `translateX(${deltaX}px)` })
+      } else {
+        setStyleOffset({})
+      }
+    }
+
+    clampToViewport()
+    const frameId = requestAnimationFrame(clampToViewport)
+    window.addEventListener('resize', clampToViewport)
+    return () => {
+      cancelAnimationFrame(frameId)
+      window.removeEventListener('resize', clampToViewport)
+    }
+  }, [isOpen])
 
   // Close on Escape key
   useEffect(() => {
@@ -129,10 +166,11 @@ export default function NotificationPanel({
     <div
       aria-label="Notifications panel"
       aria-modal="false"
-      className="absolute right-0 top-full z-50 mt-2 w-[min(24rem,calc(100vw-1.5rem))] max-w-sm sm:w-96 rounded-2xl border border-secondary-200/90 bg-white shadow-xl ring-1 ring-secondary-900/5 transition-all"
+      className="fixed inset-x-3 top-16 z-50 mt-2 sm:absolute sm:top-full sm:inset-x-auto sm:right-0 lg:left-0 lg:right-auto w-[min(24rem,calc(100vw-1.5rem))] max-w-sm sm:w-96 rounded-2xl border border-secondary-200/90 bg-white shadow-xl ring-1 ring-secondary-900/5 transition-all"
       data-testid="notification-panel"
       ref={panelRef}
       role="dialog"
+      style={styleOffset}
     >
       {/* Header */}
       <div className="flex items-center justify-between border-b border-secondary-100 px-4 py-3">
