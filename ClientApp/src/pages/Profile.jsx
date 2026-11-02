@@ -110,7 +110,7 @@ export default function Profile({ session, onStartTour, onProfileUpdate }) {
       {/* Header Banner */}
       <header
         data-tour="profile-header"
-        className="relative overflow-hidden rounded-3xl border border-secondary-200 bg-gradient-to-r from-secondary-950 via-secondary-900 to-secondary-950 p-6 sm:p-8 text-white shadow-xl"
+        className="relative overflow-hidden rounded-3xl border border-secondary-200 bg-gradient-to-r from-secondary-950 via-secondary-900 to-secondary-950 p-4 sm:p-8 text-white shadow-xl"
       >
         <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary-500/15 blur-3xl" />
         <div className="flex flex-wrap items-center justify-between gap-6 relative z-10">
@@ -173,7 +173,7 @@ export default function Profile({ session, onStartTour, onProfileUpdate }) {
       ) : form ? (
         <form
           data-tour="profile-fields"
-          className="rounded-3xl border border-secondary-200/80 bg-white p-6 sm:p-8 shadow-sm space-y-6"
+          className="rounded-3xl border border-secondary-200/80 bg-white p-4 sm:p-8 shadow-sm space-y-6"
           noValidate
           onSubmit={save}
         >
@@ -300,7 +300,7 @@ export default function Profile({ session, onStartTour, onProfileUpdate }) {
               Updating your profile automatically recalculates your scholarship &amp; admission matches and study roadmap.
             </p>
             <button
-              className="rounded-2xl bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 text-xs font-extrabold shadow-md shadow-primary-500/25 transition disabled:opacity-50 active:scale-[0.98]"
+              className="w-full sm:w-auto inline-flex items-center justify-center min-h-[44px] rounded-2xl bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 text-xs font-extrabold shadow-md shadow-primary-500/25 transition disabled:opacity-50 active:scale-[0.98]"
               disabled={saving}
               type="submit"
               data-testid="save-profile-btn"

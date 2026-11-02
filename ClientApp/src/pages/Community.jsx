@@ -6,7 +6,7 @@ import { BTN_PRIMARY, BTN_QUIET, CARD, CONTROL } from '../components/ui/styles.j
 
 const emptyDiscovery = { programs: [] }
 
-const initials = (name) => name
+const _initials = (name) => name
   .split(/\s+/)
   .filter(Boolean)
   .slice(0, 2)
@@ -211,7 +211,7 @@ export default function Community({ session, onNavigate }) {
           </div>
         </aside>
 
-        <main className="space-y-5">
+        <main className="min-w-0 space-y-5">
           <section className={`${CARD} p-5`}>
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
               <div>
@@ -241,7 +241,7 @@ export default function Community({ session, onNavigate }) {
                   {[1, 2, 3, 4, 5].map((value) => (
                     <button
                       aria-checked={score === value}
-                      className={`h-10 rounded-lg border px-4 text-sm font-bold transition ${
+                      className={`min-h-[44px] min-w-[44px] rounded-lg border px-4 text-sm font-bold transition ${
                         score === value
                           ? 'border-primary-500 bg-primary-500 text-white'
                           : 'border-secondary-200 bg-white text-secondary-600 hover:border-primary-300'
@@ -272,7 +272,7 @@ export default function Community({ session, onNavigate }) {
                 <p className="mt-1 text-xs text-secondary-400">{comment.length}/1000</p>
               </div>
 
-              <button className={BTN_PRIMARY} disabled={!selectedUniversityId || submitting} type="submit">
+              <button className={`${BTN_PRIMARY} w-full sm:w-auto min-h-[44px]`} disabled={!selectedUniversityId || submitting} type="submit">
                 {submitting ? 'Publishing...' : 'Publish Review'}
               </button>
             </form>

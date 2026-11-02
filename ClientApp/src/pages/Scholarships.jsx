@@ -402,9 +402,9 @@ export default function Scholarships({ session, onNavigate }) {
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-col min-[380px]:flex-row items-stretch min-[380px]:items-center gap-2">
                     <button
-                      className={`flex-1 rounded-xl bg-primary-500 hover:bg-primary-600 text-white px-3 py-2 text-xs font-bold shadow-sm transition active:scale-[0.98] ${FOCUS}`}
+                      className={`flex-1 inline-flex items-center justify-center min-h-[44px] rounded-xl bg-primary-500 hover:bg-primary-600 text-white px-3 py-2 text-xs font-bold shadow-sm transition active:scale-[0.98] ${FOCUS}`}
                       onClick={() => handleViewDetails(item.id)}
                       type="button"
                       data-testid={`view-scholarship-btn-${item.id}`}
@@ -412,7 +412,7 @@ export default function Scholarships({ session, onNavigate }) {
                       View Details
                     </button>
                     <button
-                      className={`rounded-xl border border-primary-300 bg-white hover:bg-primary-50 text-primary-700 px-3 py-2 text-xs font-bold transition disabled:opacity-40 disabled:hover:bg-white active:scale-[0.98] ${FOCUS}`}
+                      className={`inline-flex items-center justify-center min-h-[44px] rounded-xl border border-primary-300 bg-white hover:bg-primary-50 text-primary-700 px-3 py-2 text-xs font-bold transition disabled:opacity-40 disabled:hover:bg-white active:scale-[0.98] ${FOCUS}`}
                       disabled={!item.deadline || adding.has(item.id)}
                       onClick={() => addDeadline(item)}
                       type="button"

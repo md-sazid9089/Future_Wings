@@ -245,7 +245,7 @@ export default function Recommendations({ session, onNavigate }) {
           <div className="grid gap-6 lg:grid-cols-2">
             {recommendations.map((item, index) => (
               <article
-                className="group relative overflow-hidden rounded-3xl border border-secondary-200/80 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-xl flex flex-col justify-between"
+                className="group relative overflow-hidden rounded-3xl border border-secondary-200/80 bg-white p-5 sm:p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-xl flex flex-col justify-between"
                 key={item.programId}
               >
                 <div>
@@ -253,15 +253,15 @@ export default function Recommendations({ session, onNavigate }) {
                     Rank #{index + 1}
                   </div>
 
-                  <div className="flex items-center gap-4 pr-16">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 font-black text-lg text-white shadow-md">
+                  <div className="flex flex-col min-[480px]:flex-row min-[480px]:items-center gap-3 sm:gap-4 pr-16 sm:pr-20">
+                    <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 font-black text-base sm:text-lg text-white shadow-md">
                       {Math.round(item.matchScore)}%
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <p className="text-xs font-bold uppercase tracking-wider text-primary-600">
                         {item.country} · {item.city}
                       </p>
-                      <h3 className="text-lg font-black tracking-tight text-secondary-950 group-hover:text-primary-600 transition-colors">
+                      <h3 className="text-base sm:text-lg font-black tracking-tight text-secondary-950 group-hover:text-primary-600 transition-colors break-words">
                         {item.programName}
                       </h3>
                       <p className="text-xs font-medium text-secondary-500">
@@ -298,9 +298,9 @@ export default function Recommendations({ session, onNavigate }) {
                     <p className="text-[11px] text-secondary-500">{formatDuration(item.durationMonths)} · {item.level}</p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex flex-col min-[380px]:flex-row flex-wrap items-stretch min-[380px]:items-center gap-2">
                     <button
-                      className={`rounded-xl border px-3 py-1.5 text-xs font-bold transition ${FOCUS} ${
+                      className={`inline-flex items-center justify-center min-h-[44px] rounded-xl border px-3 py-2 text-xs font-bold transition ${FOCUS} ${
                         item.isSaved
                           ? 'border-primary-500 bg-primary-50 text-primary-700 hover:bg-primary-100'
                           : 'border-secondary-200 bg-white text-secondary-700 hover:bg-secondary-50'
@@ -318,7 +318,7 @@ export default function Recommendations({ session, onNavigate }) {
                         type="button"
                         data-testid={`track-program-btn-${item.programId}`}
                         onClick={() => onNavigate?.('Applications')}
-                        className={`inline-flex items-center gap-1.5 rounded-xl border border-success-200 bg-success-50 hover:bg-success-100 px-3.5 py-1.5 text-xs font-bold text-success-800 transition ${FOCUS}`}
+                        className={`inline-flex items-center justify-center min-h-[44px] gap-1.5 rounded-xl border border-success-200 bg-success-50 hover:bg-success-100 px-3.5 py-2 text-xs font-bold text-success-800 transition ${FOCUS}`}
                         title="View in Application Tracker"
                       >
                         <span className="h-2 w-2 rounded-full bg-success-600" aria-hidden="true" />
@@ -333,7 +333,7 @@ export default function Recommendations({ session, onNavigate }) {
                         data-testid={`track-program-btn-${item.programId}`}
                         disabled={trackingIds.has(item.programId)}
                         onClick={() => trackProgram(item)}
-                        className={`inline-flex items-center gap-1.5 rounded-xl bg-primary-500 hover:bg-primary-600 px-3.5 py-1.5 text-xs font-extrabold text-white shadow-sm shadow-primary-500/20 transition disabled:opacity-60 ${FOCUS}`}
+                        className={`inline-flex items-center justify-center min-h-[44px] gap-1.5 rounded-xl bg-primary-500 hover:bg-primary-600 px-3.5 py-2 text-xs font-extrabold text-white shadow-sm shadow-primary-500/20 transition disabled:opacity-60 ${FOCUS}`}
                       >
                         {trackingIds.has(item.programId) ? (
                           <>

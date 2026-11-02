@@ -83,6 +83,35 @@ public class SubscriptionController(ISubscriptionService subscriptionService) : 
     }
 
     /// <summary>
+    /// Demo-mode action to unlock Pro or Premium tier without taking real payment.
+    /// Strictly refused in Production with standard ProblemDetails.
+    /// Idempotent: repeated calls do not create duplicate payments or conflicting entitlements.
+    /// </summary>
+    [HttpPost("demo-unlock")]
+    public async Task<IActionResult> UnlockDemo([FromBody] DemoUnlockRequest request)
+    {
+        try
+        {
+            return Ok(await subscriptionService.UnlockDemoPlanAsync(GetUserId(), request.Tier));
+        }
+        catch (ArgumentException exception)
+        {
+            return BadRequest(new { message = exception.Message });
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (InvalidOperationException exception)
+        {
+            return Problem(
+                detail: exception.Message,
+                statusCode: StatusCodes.Status503ServiceUnavailable,
+                title: "Demo Mode Unavailable");
+        }
+    }
+
+    /// <summary>
     /// Demo-mode action to unlock Pro tier and Roadmap entitlements without taking real payment.
     /// Strictly refused in Production with standard ProblemDetails.
     /// Idempotent: repeated calls do not create duplicate payments or conflicting entitlements.
@@ -145,4 +174,5 @@ public class SubscriptionController(ISubscriptionService subscriptionService) : 
     }
 
     public sealed record CheckoutRequest(string Tier, string? ReturnUrl);
+    public sealed record DemoUnlockRequest(string Tier);
 }

@@ -105,9 +105,9 @@ public static class DiscoverySeeder
                 "ETH Zurich", "Zurich", "Master in Computer Science", "Master's", 1800m, 24, 98, "World Top 10,Google & Disney Research Labs,Ultra Low Tuition"),
             new Seed("CH", "Switzerland", "World top-10 universities with very low tuition and highest graduate salaries", true,
                 "ETH Zurich", "Zurich", "Master in Data Science", "Master's", 1800m, 24, 97, "Max Planck Institute Partner,Swiss Banking Tech,Top ROI"),
-            new Seed("EPFL", "Switzerland", "World top-10 universities with very low tuition and highest graduate salaries", true,
+            new Seed("CH", "Switzerland", "World top-10 universities with very low tuition and highest graduate salaries", true,
                 "EPFL", "Lausanne", "MSc in Computer Science", "Master's", 1600m, 24, 96, "Lake Geneva Innovation Hub,Cybersecurity,Low Tuition"),
-            new Seed("EPFL", "Switzerland", "World top-10 universities with very low tuition and highest graduate salaries", true,
+            new Seed("CH", "Switzerland", "World top-10 universities with very low tuition and highest graduate salaries", true,
                 "EPFL", "Lausanne", "MSc in Robotics", "Master's", 1600m, 24, 95, "World Renowned Robotics,Swiss Tech,High Salaries"),
 
             // === SINGAPORE ===

@@ -92,19 +92,24 @@ To enable demo mode, run the backend in `Development` with the demo flag:
 - **Staff Demo Accounts** (Admin / Agent):
   - In Development, set `FUTUREWINGS_SEED_STAFF=true` (or `DemoMode:SeedStaffAccounts=true`) to seed `admin@futurewings.io` (`Password123!`) and `agent@futurewings.io` (`Password123!`).
 
-### Evaluator Flow: Unlocking the Pro Plan (No Payment Required)
+### Evaluator Flow: Unlocking Demo Features (Pro & Premium Without Payment)
 1. Sign in or register with any Student account on the **Free** tier.
 2. Navigate to **Plans & Billing** in the left sidebar or at `#/plans`.
-3. Because Demo Mode is active and the account is not already Pro or Premium, a clearly labeled **Unlock Pro Demo** button appears in both the top Stripe Demo banner and the **Pro** plan card.
-4. Click **Unlock Pro Demo**:
-   - The frontend issues `POST /api/subscription/demo-pro` (or simulated checkout) without invoking Stripe, requiring card details, or making external calls.
-   - The backend validates demo-mode safety, grants the **Pro** tier, and unlocks Pro entitlements.
-   - A success toast `"Pro demo access enabled"` confirms the upgrade.
-5. **Entitlement Verification**:
+3. Notice the demo message banner: *"Demo access is enabled. Choose a plan to unlock its features."* and card subtext *"Unlock instantly in demo mode."* (no fake credit card inputs or real payment modals).
+4. **Unlock Pro**:
+   - Click **Upgrade to Pro**.
+   - Shows loading state and unlocks the tier immediately via `POST /api/subscription/demo-unlock` with `{ "tier": "Pro" }`.
+   - Toast confirms *"Pro features unlocked in demo mode."* and the button updates to disabled *"Current plan"*.
    - **Roadmap Unlocked**: Navigate to **Roadmap** (`#/roadmap`) — the interactive study roadmap mind map is fully accessible and unlocked.
-   - **AI Interview Locked**: Navigate to **AI Interview** (`#/ai-interview`) — the page remains strictly locked, rendering the `LockedFeature` screen indicating that **AI Interview is part of Premium** and requires a real Premium upgrade.
-6. **Idempotency Guarantee**: Clicking **Unlock Pro Demo** repeatedly is completely idempotent; it will never create duplicate payment records, multiple subscriptions, or conflicting entitlements.
-7. **Resetting Tier**: In Demo Mode, evaluators can click **Reset to Free Tier** at any time to return to the Free tier and re-test the upgrade flow.
+   - **AI Interview Locked**: Navigate to **AI Interview** (`#/ai-interview`) — remains locked, indicating that **AI Interview is part of Premium**.
+5. **Unlock Premium**:
+   - Click **Upgrade to Premium**.
+   - Immediately unlocks via `POST /api/subscription/demo-unlock` with `{ "tier": "Premium" }`.
+   - Toast confirms *"Premium features unlocked in demo mode."* and the button updates to disabled *"Current plan"*.
+   - **Both Features Unlocked**: Both **Roadmap** (`#/roadmap`) and **AI Interview** (`#/ai-interview`) are immediately unlocked and accessible.
+6. **Idempotency Guarantee**: Repeated clicks or API calls are completely idempotent; they will never duplicate payments or create conflicting entitlements.
+7. **Resetting Tier**: In Demo Mode, evaluators can click **Reset to Free Tier (Demo)** or **Switch back to Free (Demo)** at any time to return to the Free tier and re-test the upgrade flow.
+8. **When Demo Mode is Inactive**: In production or when demo mode is disabled without live billing, the banner displays *"Live billing is planned but not yet available. Everything on the Free plan works normally."* and upgrade buttons are disabled with *"Unavailable until payments are configured."*. Production environments strictly reject simulated unlock requests with RFC 7807 `ProblemDetails` (HTTP 503 Service Unavailable).
 
 ---
 

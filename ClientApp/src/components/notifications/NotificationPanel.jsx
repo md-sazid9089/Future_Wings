@@ -129,7 +129,7 @@ export default function NotificationPanel({
     <div
       aria-label="Notifications panel"
       aria-modal="false"
-      className="absolute right-0 top-full z-50 mt-2 w-80 sm:w-96 rounded-2xl border border-secondary-200/90 bg-white shadow-xl ring-1 ring-secondary-900/5 transition-all"
+      className="absolute right-0 top-full z-50 mt-2 w-[min(24rem,calc(100vw-1.5rem))] max-w-sm sm:w-96 rounded-2xl border border-secondary-200/90 bg-white shadow-xl ring-1 ring-secondary-900/5 transition-all"
       data-testid="notification-panel"
       ref={panelRef}
       role="dialog"

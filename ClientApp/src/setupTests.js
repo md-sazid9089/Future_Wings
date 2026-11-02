@@ -26,3 +26,12 @@ if (typeof globalThis.ResizeObserver === 'undefined') {
     disconnect() {}
   }
 }
+
+if (typeof globalThis.requestAnimationFrame === 'undefined') {
+  globalThis.requestAnimationFrame = (callback) => setTimeout(callback, 0)
+  globalThis.cancelAnimationFrame = (id) => clearTimeout(id)
+}
+if (typeof window !== 'undefined' && !window.requestAnimationFrame) {
+  window.requestAnimationFrame = globalThis.requestAnimationFrame
+  window.cancelAnimationFrame = globalThis.cancelAnimationFrame
+}

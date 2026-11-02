@@ -44,7 +44,7 @@ export default function DeadlineRow({ deadline, now, pending, justAdded, onDelet
 
   return (
     <article
-      className={`flex gap-4 border-l-2 px-5 py-4 transition-all duration-300 ${
+      className={`flex gap-3 sm:gap-4 border-l-2 px-3.5 sm:px-5 py-4 transition-all duration-300 ${
         overdue ? 'border-danger-500 bg-danger-50/40' : 'border-transparent'
       } ${pending ? 'opacity-60' : ''} ${entered ? 'translate-y-0 opacity-100' : '-translate-y-1 opacity-0'}`}
     >
@@ -71,7 +71,7 @@ export default function DeadlineRow({ deadline, now, pending, justAdded, onDelet
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
           <h3
-            className={`font-semibold ${
+            className={`font-semibold break-words ${
               isCompleted ? 'text-secondary-400 line-through' : 'text-secondary-950'
             }`}
           >
@@ -96,7 +96,7 @@ export default function DeadlineRow({ deadline, now, pending, justAdded, onDelet
           {due.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}
         </p>
 
-        {notes && <p className="mt-2 text-sm leading-6 text-secondary-600">{notes}</p>}
+        {notes && <p className="mt-2 text-sm leading-6 text-secondary-600 break-words">{notes}</p>}
       </div>
 
       {confirming ? (

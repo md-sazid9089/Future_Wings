@@ -23,7 +23,7 @@ export default function ReviewCard({ review }) {
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="font-bold text-secondary-950">{review.reviewerName}</h3>
+            <h3 className="font-bold text-secondary-950 break-words">{review.reviewerName}</h3>
             {review.isMine && (
               <span className="rounded-full bg-success-50 px-2 py-0.5 text-xs font-bold text-success-700">
                 Your review
@@ -33,7 +33,7 @@ export default function ReviewCard({ review }) {
               {ratingText(review.score)}
             </span>
           </div>
-          <p className="mt-2 text-sm leading-6 text-secondary-600 whitespace-pre-line" data-testid="review-comment">
+          <p className="mt-2 text-sm leading-6 text-secondary-600 whitespace-pre-line break-words" data-testid="review-comment">
             {cleanComment || 'No written comment provided.'}
           </p>
         </div>

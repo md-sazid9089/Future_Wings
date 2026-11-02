@@ -9,154 +9,11 @@ const tierAccent = {
   Premium: 'text-accent-600',
 }
 
-function StripeDemoModal({ isOpen, onClose, plan, onConfirm, busy, publishableKey }) {
-  const [cardNumber, setCardNumber] = useState('4242 •••• •••• 4242')
-  const [expiry, setExpiry] = useState('12 / 28')
-  const [cvc, setCvc] = useState('123')
-  const [name, setName] = useState('Demo Student')
-
-  if (!isOpen || !plan) return null
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-secondary-950/60 p-4 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-2xl border border-secondary-100">
-        {/* Stripe Header */}
-        <div className="bg-gradient-to-r from-slate-900 to-indigo-950 px-6 py-5 text-white">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-indigo-500 font-black text-xs text-white shadow-sm">
-                S
-              </div>
-              <span className="text-sm font-semibold tracking-wide text-indigo-200 uppercase">Stripe Checkout Demo</span>
-            </div>
-            <button
-              onClick={onClose}
-              disabled={busy}
-              type="button"
-              className="rounded-lg p-1 text-slate-400 hover:bg-white/10 hover:text-white transition focus:outline-none"
-            >
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <div className="mt-4">
-            <p className="text-xs text-indigo-300 font-medium">Subscribe to FutureWings</p>
-            <div className="mt-1 flex items-baseline justify-between">
-              <h3 className="text-2xl font-bold">{plan.name} Tier</h3>
-              <span className="text-2xl font-extrabold text-white">৳{(plan.monthlyPriceUsd * 120).toLocaleString()} Tk<span className="text-sm font-normal text-indigo-200"> (${plan.monthlyPriceUsd} USD/mo)</span></span>
-            </div>
-          </div>
-        </div>
-
-        {/* Demo Details Body */}
-        <div className="p-6 space-y-4">
-          <div className="rounded-xl bg-slate-50 border border-slate-200/80 p-3 text-xs text-slate-600 space-y-1">
-            <div className="flex items-center justify-between text-slate-700 font-medium">
-              <span>Environment:</span>
-              <span className="inline-flex items-center gap-1 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold uppercase text-amber-800">
-                Stripe Test / Demo
-              </span>
-            </div>
-            <div className="truncate text-[11px] text-slate-500">
-              <span className="font-semibold text-slate-600">Key: </span>
-              <code className="bg-slate-200/70 px-1 rounded font-mono">{publishableKey || 'pk_test_demo_51FutureWingsDemoPublishableKey889201'}</code>
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <div>
-              <label className="block text-xs font-semibold text-secondary-700 uppercase tracking-wider mb-1">
-                Card Information (Demo Test Card)
-              </label>
-              <div className="relative rounded-lg border border-secondary-300 bg-white shadow-sm focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
-                <div className="flex items-center px-3 py-2 border-b border-secondary-200">
-                  <svg className="h-5 w-5 text-secondary-400 mr-2 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.75" viewBox="0 0 24 24">
-                    <rect x="2" y="5" width="20" height="14" rx="2" />
-                    <line x1="2" y1="10" x2="22" y2="10" />
-                  </svg>
-                  <input
-                    type="text"
-                    value={cardNumber}
-                    onChange={(e) => setCardNumber(e.target.value)}
-                    className="w-full bg-transparent text-sm font-mono text-secondary-900 focus:outline-none"
-                    placeholder="4242 4242 4242 4242"
-                  />
-                  <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] font-bold text-indigo-700">TEST</span>
-                </div>
-                <div className="grid grid-cols-2 divide-x divide-secondary-200">
-                  <input
-                    type="text"
-                    value={expiry}
-                    onChange={(e) => setExpiry(e.target.value)}
-                    className="px-3 py-2 text-sm font-mono text-secondary-900 bg-transparent focus:outline-none"
-                    placeholder="MM / YY"
-                  />
-                  <input
-                    type="text"
-                    value={cvc}
-                    onChange={(e) => setCvc(e.target.value)}
-                    className="px-3 py-2 text-sm font-mono text-secondary-900 bg-transparent focus:outline-none"
-                    placeholder="CVC"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-secondary-700 uppercase tracking-wider mb-1">
-                Name on Card
-              </label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-lg border border-secondary-300 px-3 py-2 text-sm text-secondary-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                placeholder="Cardholder name"
-              />
-            </div>
-          </div>
-
-          <div className="pt-2">
-            <button
-              type="button"
-              disabled={busy}
-              onClick={() => onConfirm(plan.tier)}
-              className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-3 text-sm font-bold text-white shadow-md shadow-indigo-600/20 transition hover:bg-indigo-700 disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            >
-              {busy ? (
-                <>
-                  <svg className="h-4 w-4 animate-spin text-white" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                  </svg>
-                  Processing Demo Payment...
-                </>
-              ) : (
-                <>
-                  <svg className="h-4 w-4 text-indigo-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                  Pay ${plan.monthlyPriceUsd}.00 & Upgrade (Demo)
-                </>
-              )}
-            </button>
-            <p className="mt-2 text-center text-[11px] text-secondary-400">
-              🔒 Simulated checkout with Stripe test keys. No real charge is made.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function Subscription({ session, subscription, onSubscriptionChange }) {
   const [plans, setPlans] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [busyTier, setBusyTier] = useState('')
-  const [selectedDemoPlan, setSelectedDemoPlan] = useState(null)
 
   // Stripe returns the browser here with ?checkout=success|cancelled. Read it once
   // during initialisation (and strip it from the URL) rather than in an effect.
@@ -172,14 +29,14 @@ export default function Subscription({ session, subscription, onSubscriptionChan
 
   useEffect(() => {
     let active = true
-    apiRequest('/subscription/plans', { token: session.token })
+    apiRequest('/subscription/plans', { token: session?.token })
       .then((data) => { if (active) setPlans(data) })
       .catch((requestError) => { if (active) setError(requestError.message) })
       .finally(() => { if (active) setLoading(false) })
     return () => { active = false }
-  }, [session.token])
+  }, [session?.token])
 
-  // Re-fetch entitlements after a successful payment (calls a prop, sets no state here).
+  // Re-fetch entitlements after a successful payment
   useEffect(() => {
     if (checkoutOutcome === 'success') onSubscriptionChange?.()
   }, [checkoutOutcome, onSubscriptionChange])
@@ -191,25 +48,33 @@ export default function Subscription({ session, subscription, onSubscriptionChan
   }, [toast])
 
   const simulated = subscription?.simulationEnabled === true || subscription?.isDemoMode === true
-  const publishableKey = subscription?.publishableKey || 'pk_test_demo_51FutureWingsDemoPublishableKey889201'
   const currentTier = subscription?.tier ?? 'Free'
-  const isProOrPremium = currentTier === 'Pro' || currentTier === 'Premium'
-  const canUnlockProDemo = simulated && !isProOrPremium
 
-  const handleOpenUpgrade = (plan) => {
-    if (simulated) {
-      setSelectedDemoPlan(plan)
-    } else {
-      executeDirectCheckout(plan.tier)
+  const handleUnlockDemo = async (tier, planName) => {
+    setBusyTier(tier)
+    setError('')
+    try {
+      await apiRequest('/subscription/demo-unlock', {
+        token: session?.token,
+        method: 'POST',
+        body: JSON.stringify({ tier }),
+      })
+      onSubscriptionChange?.()
+      setToast(`${planName || tier} features unlocked in demo mode.`)
+    } catch (requestError) {
+      setError(requestError.message || `Failed to unlock ${planName || tier} demo.`)
+    } finally {
+      setBusyTier('')
     }
   }
 
+  // Direct checkout path for production when configured
   const executeDirectCheckout = async (tier) => {
     setBusyTier(tier)
     setError('')
     try {
       const { checkoutUrl } = await apiRequest('/subscription/checkout', {
-        token: session.token,
+        token: session?.token,
         method: 'POST',
         body: JSON.stringify({ tier, returnUrl: window.location.origin }),
       })
@@ -220,58 +85,29 @@ export default function Subscription({ session, subscription, onSubscriptionChan
     }
   }
 
-  const executeDemoPayment = async (tier) => {
-    setBusyTier(tier)
-    setError('')
-    try {
-      await apiRequest('/subscription/simulate-checkout', {
-        token: session.token,
-        method: 'POST',
-        body: JSON.stringify({ tier }),
-      })
-      onSubscriptionChange?.()
-      setSelectedDemoPlan(null)
-      setToast(`Demo Stripe payment confirmed — upgraded to ${tier}!`)
-    } catch (requestError) {
-      setError(requestError.message)
-    } finally {
-      setBusyTier('')
-    }
-  }
-
-  // Demo mode shortcut to unlock Pro without requiring card details
-  const handleUnlockProDemo = async () => {
-    setBusyTier('UnlockPro')
-    setError('')
-    try {
-      await apiRequest('/subscription/demo-pro', {
-        token: session.token,
-        method: 'POST',
-      })
-      onSubscriptionChange?.()
-      setToast('Pro demo access enabled')
-    } catch (requestError) {
-      setError(requestError.message || 'Failed to unlock Pro demo.')
-    } finally {
-      setBusyTier('')
+  const handleUpgradeClick = (plan) => {
+    if (simulated) {
+      handleUnlockDemo(plan.tier, plan.name)
+    } else {
+      executeDirectCheckout(plan.tier)
     }
   }
 
   // Test-mode only: lets the tiers be demoed repeatedly without a database edit.
-  const downgrade = async () => {
+  const handleDowngrade = async () => {
     setBusyTier('Free')
     setError('')
     try {
-      await apiRequest('/subscription/simulate-checkout', {
-        token: session.token,
+      await apiRequest('/subscription/demo-unlock', {
+        token: session?.token,
         method: 'POST',
         body: JSON.stringify({ tier: 'Free' }),
       })
+      onSubscriptionChange?.()
       setToast('Returned to Free tier.')
     } catch (requestError) {
-      setError(requestError.message)
+      setError(requestError.message || 'Failed to reset plan.')
     } finally {
-      onSubscriptionChange?.()
       setBusyTier('')
     }
   }
@@ -293,55 +129,37 @@ export default function Subscription({ session, subscription, onSubscriptionChan
         </div>
       )}
 
-      {/* Stripe Demo Mode Banner */}
+      {/* Demo Mode Notice Banner */}
       {subscription && simulated && (
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-indigo-100 bg-indigo-50/70 p-4 text-sm text-indigo-900 shadow-sm">
           <div className="flex items-center gap-2.5">
             <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 text-xs font-black text-white">
-              S
+              ★
             </span>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-indigo-950">Stripe Demo Keys Active</span>
-                <span className="rounded bg-indigo-200/70 px-1.5 py-0.5 text-[10px] font-mono font-bold text-indigo-800">
-                  {publishableKey}
-                </span>
-              </div>
+              <p className="font-bold text-indigo-950">Demo access is enabled. Choose a plan to unlock its features.</p>
               <p className="text-xs text-indigo-700 mt-0.5">
-                Simulated checkout enabled for demo presentations. Test cards (e.g. <code className="font-mono bg-indigo-100 px-1 rounded">4242 4242 4242 4242</code>) work instantly.
+                Click Upgrade on Pro or Premium to unlock study roadmaps and AI interview features immediately.
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-2">
-            {canUnlockProDemo && (
-              <button
-                onClick={handleUnlockProDemo}
-                disabled={Boolean(busyTier)}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-indigo-700 transition disabled:opacity-60"
-                type="button"
-                data-testid="unlock-pro-demo-banner-btn"
-              >
-                {busyTier === 'UnlockPro' ? 'Unlocking...' : 'Unlock Pro Demo'}
-              </button>
-            )}
-            {currentTier !== 'Free' && (
-              <button
-                onClick={() => downgrade()}
-                disabled={busyTier === 'Free'}
-                className="rounded-lg border border-indigo-200 bg-white px-3 py-1.5 text-xs font-semibold text-indigo-700 shadow-sm hover:bg-indigo-50 transition"
-                type="button"
-              >
-                {busyTier === 'Free' ? 'Resetting...' : 'Reset to Free Tier'}
-              </button>
-            )}
-          </div>
+          {currentTier !== 'Free' && (
+            <button
+              onClick={handleDowngrade}
+              disabled={Boolean(busyTier)}
+              className="rounded-lg border border-indigo-200 bg-white px-3 py-1.5 text-xs font-semibold text-indigo-700 shadow-sm hover:bg-indigo-50 transition disabled:opacity-60"
+              type="button"
+            >
+              {busyTier === 'Free' ? 'Resetting...' : 'Reset to Free Tier (Demo)'}
+            </button>
+          )}
         </div>
       )}
 
+      {/* Live Billing Disabled Notice when demo mode is inactive */}
       {subscription && !simulated && subscription.stripeConfigured === false && (
         <div className="mb-6 rounded-2xl border border-warning-100 bg-warning-50 px-4 py-3 text-sm text-warning-700">
-          Payments aren&rsquo;t switched on yet, so upgrades are unavailable. Everything on the Free
-          plan works normally.
+          Live billing is planned but not yet available. Everything on the Free plan works normally.
         </div>
       )}
 
@@ -355,7 +173,7 @@ export default function Subscription({ session, subscription, onSubscriptionChan
             const isCurrent = plan.tier === currentTier
             const isFree = plan.monthlyPriceUsd === 0
             return (
-              <li className={`flex flex-col p-6 ${CARD} ${isCurrent ? 'ring-2 ring-primary-500 shadow-md' : ''}`} key={plan.tier}>
+              <li className={`flex flex-col p-5 sm:p-6 ${CARD} ${isCurrent ? 'ring-2 ring-primary-500 shadow-md' : ''}`} key={plan.tier}>
                 <div className="flex items-baseline justify-between gap-2">
                   <h2 className={`text-lg font-bold ${tierAccent[plan.tier] ?? 'text-secondary-900'}`}>{plan.name}</h2>
                   {isCurrent && (
@@ -393,12 +211,18 @@ export default function Subscription({ session, subscription, onSubscriptionChan
                 <div className="mt-6">
                   {isCurrent ? (
                     <div className="flex flex-col gap-2">
-                      <p className="text-sm font-medium text-secondary-500">You&rsquo;re currently on this plan.</p>
+                      <button
+                        type="button"
+                        disabled
+                        className="w-full rounded-xl border border-secondary-200 bg-secondary-100/70 px-4 py-2.5 text-sm font-semibold text-secondary-500 cursor-default"
+                      >
+                        Current plan
+                      </button>
                       {simulated && !isFree && (
                         <button
                           className="text-xs font-semibold text-secondary-500 hover:text-secondary-700 underline text-left"
-                          disabled={busyTier === 'Free'}
-                          onClick={() => downgrade()}
+                          disabled={Boolean(busyTier)}
+                          onClick={handleDowngrade}
                           type="button"
                         >
                           {busyTier === 'Free' ? 'Resetting…' : 'Switch back to Free (Demo)'}
@@ -409,47 +233,46 @@ export default function Subscription({ session, subscription, onSubscriptionChan
                     simulated ? (
                       <button
                         className={`w-full rounded-lg border border-secondary-200 px-4 py-2.5 text-sm font-semibold text-secondary-700 transition hover:border-secondary-300 disabled:opacity-60 ${FOCUS}`}
-                        disabled={busyTier === 'Free'}
-                        onClick={() => downgrade()}
+                        disabled={Boolean(busyTier)}
+                        onClick={handleDowngrade}
                         type="button"
                       >
                         {busyTier === 'Free' ? 'Applying…' : 'Switch back to Free'}
                       </button>
-                    ) : <p className="text-sm text-secondary-500">Included by default.</p>
-                  ) : plan.tier === 'Pro' && canUnlockProDemo ? (
-                    <div className="flex flex-col gap-2">
+                    ) : (
+                      <p className="text-sm text-secondary-500">Included by default.</p>
+                    )
+                  ) : simulated ? (
+                    <div className="flex flex-col gap-1.5">
                       <button
-                        className={`w-full ${BTN_PRIMARY} ${FOCUS} bg-indigo-600 hover:bg-indigo-700 text-white`}
+                        className={`w-full ${BTN_PRIMARY} ${FOCUS}`}
                         disabled={Boolean(busyTier)}
-                        onClick={handleUnlockProDemo}
+                        onClick={() => handleUpgradeClick(plan)}
                         type="button"
-                        data-testid="unlock-pro-demo-btn"
+                        data-testid={`unlock-${plan.tier.toLowerCase()}-demo-btn`}
                       >
-                        {busyTier === 'UnlockPro' ? 'Unlocking...' : 'Unlock Pro Demo'}
+                        {busyTier === plan.tier ? 'Unlocking...' : `Upgrade to ${plan.name}`}
                       </button>
                       <p className="text-xs text-secondary-500 text-center">
-                        Instant simulated unlock &bull; No card required
+                        Unlock instantly in demo mode.
                       </p>
                     </div>
                   ) : (
-                    <button
-                      className={`w-full ${BTN_PRIMARY} ${FOCUS}`}
-                      disabled={!plan.purchasable || busyTier === plan.tier}
-                      onClick={() => handleOpenUpgrade(plan)}
-                      type="button"
-                    >
-                      {busyTier === plan.tier
-                        ? 'Processing...'
-                        : simulated
-                          ? `Upgrade to ${plan.name} (Stripe Demo)`
-                          : `Upgrade to ${plan.name}`}
-                    </button>
-                  )}
-                  {!isCurrent && !isFree && !plan.purchasable && (
-                    <p className="mt-2 text-xs text-secondary-400">Unavailable until payments are configured.</p>
-                  )}
-                  {!isCurrent && !isFree && plan.purchasable && simulated && plan.tier !== 'Pro' && (
-                    <p className="mt-2 text-xs text-secondary-400">⚡ Instant test checkout with demo key.</p>
+                    <div className="flex flex-col gap-1.5">
+                      <button
+                        className={`w-full ${BTN_PRIMARY} ${FOCUS} ${!plan.purchasable || !subscription?.stripeConfigured ? 'opacity-60 cursor-not-allowed' : ''}`}
+                        disabled={!plan.purchasable || !subscription?.stripeConfigured || Boolean(busyTier)}
+                        onClick={() => handleUpgradeClick(plan)}
+                        type="button"
+                      >
+                        {busyTier === plan.tier ? 'Processing...' : `Upgrade to ${plan.name}`}
+                      </button>
+                      {(!plan.purchasable || !subscription?.stripeConfigured) && (
+                        <p className="text-xs text-secondary-400 text-center">
+                          Unavailable until payments are configured.
+                        </p>
+                      )}
+                    </div>
                   )}
                 </div>
               </li>
@@ -457,16 +280,6 @@ export default function Subscription({ session, subscription, onSubscriptionChan
           })}
         </ul>
       )}
-
-      {/* Interactive Stripe Demo Checkout Modal */}
-      <StripeDemoModal
-        isOpen={Boolean(selectedDemoPlan)}
-        onClose={() => setSelectedDemoPlan(null)}
-        plan={selectedDemoPlan}
-        onConfirm={executeDemoPayment}
-        busy={Boolean(busyTier)}
-        publishableKey={publishableKey}
-      />
 
       <Toast message={toast} />
     </div>

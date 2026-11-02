@@ -31,7 +31,7 @@ export default function ProfileCompletionPrompt({
       data-testid="profile-completion-prompt-modal"
     >
       <div
-        className={`${CARD} relative w-full max-w-lg overflow-hidden border-secondary-200/90 p-6 sm:p-8 shadow-2xl space-y-6`}
+        className={`${CARD} relative w-full max-w-lg max-h-[92vh] overflow-y-auto border-secondary-200/90 p-4 sm:p-8 shadow-2xl space-y-6`}
         ref={modalRef}
       >
         {/* Subtle decorative glow */}

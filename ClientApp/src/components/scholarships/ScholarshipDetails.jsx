@@ -144,7 +144,7 @@ export default function ScholarshipDetails({
       </div>
 
       {/* Main hero card */}
-      <header className={`${CARD} overflow-hidden p-6 sm:p-8`}>
+      <header className={`${CARD} overflow-hidden p-4 sm:p-8`}>
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="space-y-3 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-secondary-600">

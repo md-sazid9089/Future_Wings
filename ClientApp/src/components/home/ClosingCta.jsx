@@ -19,7 +19,7 @@ export default function ClosingCta({ onSignUp, onSignIn }) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           ref={containerRef}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-secondary-950 via-secondary-900 to-[#0e172a] px-6 py-16 sm:px-16 sm:py-20 text-center shadow-2xl shadow-secondary-950/20 border border-secondary-800"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-secondary-950 via-secondary-900 to-[#0e172a] px-5 py-12 sm:px-16 sm:py-20 text-center shadow-2xl shadow-secondary-950/20 border border-secondary-800"
         >
           {/* Luminous background gradients */}
           <div

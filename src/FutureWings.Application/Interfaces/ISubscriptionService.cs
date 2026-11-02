@@ -21,4 +21,10 @@ public interface ISubscriptionService
     /// Strictly refused in Production. Grants only Pro entitlements and is idempotent.
     /// </summary>
     Task<SubscriptionStatusDto> UnlockProDemoAsync(int userId);
+
+    /// <summary>
+    /// Demo-mode action to unlock Pro or Premium plan without real payment.
+    /// Strictly refused in Production. Grants corresponding entitlements and is idempotent.
+    /// </summary>
+    Task<SubscriptionStatusDto> UnlockDemoPlanAsync(int userId, string tier);
 }

@@ -1,5 +1,3 @@
-import { LogoMark } from './icons.jsx'
-
 const productLinks = [
   { label: 'Discovery & Search', href: '#features' },
   { label: 'Tier Recommendations', href: '#features' },
@@ -40,9 +38,7 @@ export default function SiteFooter() {
           {/* Brand info (spans 2 columns) */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-500 text-white shadow-md shadow-primary-500/20">
-                <LogoMark className="h-5 w-5" />
-              </div>
+              <img src="/logo.png" alt="AIgnite Buildathon Logo" className="h-8 sm:h-9 w-auto max-w-[150px] object-contain rounded-lg" />
               <span className="text-xl font-extrabold tracking-tight text-secondary-950">
                 FutureWings<span className="text-primary-500 font-semibold text-xs ml-1 uppercase tracking-widest">AI</span>
               </span>
@@ -156,7 +152,7 @@ export default function SiteFooter() {
         {/* Bottom copyright and social */}
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-secondary-100 pt-8 text-xs text-secondary-500">
           <p>© {new Date().getFullYear()} FutureWings Inc. All rights reserved.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6">
             <a
               href="https://github.com/md-sazid9089/Future_Wings"
               target="_blank"

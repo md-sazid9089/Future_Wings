@@ -105,21 +105,21 @@ const features = [
           </span>
         </div>
         <div className="space-y-2 text-xs">
-          <div className="flex items-center justify-between rounded-xl border border-emerald-200 bg-emerald-50/50 p-2.5">
-            <div className="flex items-center gap-2">
-              <span className="h-4 w-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px]">
+          <div className="flex items-center justify-between gap-2 rounded-xl border border-emerald-200 bg-emerald-50/50 p-2.5">
+            <div className="flex items-center gap-2 min-w-0">
+              <span className="h-4 w-4 shrink-0 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px]">
                 ✓
               </span>
-              <span className="font-semibold text-secondary-800 line-through">IELTS TRF Transmission</span>
+              <span className="font-semibold text-secondary-800 line-through truncate">IELTS TRF Transmission</span>
             </div>
-            <span className="text-[10px] font-bold text-emerald-700">Completed</span>
+            <span className="text-[10px] font-bold text-emerald-700 shrink-0">Completed</span>
           </div>
-          <div className="flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50/50 p-2.5">
-            <div className="flex items-center gap-2">
-              <span className="h-4 w-4 rounded-full border border-amber-400 text-transparent" />
-              <span className="font-bold text-secondary-950">Official Sealed Transcripts</span>
+          <div className="flex items-center justify-between gap-2 rounded-xl border border-amber-200 bg-amber-50/50 p-2.5">
+            <div className="flex items-center gap-2 min-w-0">
+              <span className="h-4 w-4 shrink-0 rounded-full border border-amber-400 text-transparent" />
+              <span className="font-bold text-secondary-950 truncate">Official Sealed Transcripts</span>
             </div>
-            <span className="text-[10px] font-bold text-amber-700">Due Nov 23</span>
+            <span className="text-[10px] font-bold text-amber-700 shrink-0">Due Nov 23</span>
           </div>
         </div>
       </div>

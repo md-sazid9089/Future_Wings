@@ -101,12 +101,12 @@ export default function Hero({ onGetRecommendations, onExploreCountries }) {
           {/* Main Workspace Frame */}
           <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-secondary-200/90 bg-white/95 p-4 shadow-2xl shadow-secondary-900/10 backdrop-blur-xl sm:p-7">
             {/* Window Title Bar */}
-            <div className="flex items-center justify-between border-b border-secondary-100 pb-4 mb-5">
-              <div className="flex items-center gap-2">
-                <span className="h-3 w-3 rounded-full bg-rose-400/80" />
-                <span className="h-3 w-3 rounded-full bg-amber-400/80" />
-                <span className="h-3 w-3 rounded-full bg-emerald-400/80" />
-                <span className="ml-2 text-xs font-bold text-secondary-400 font-mono">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-secondary-100 pb-4 mb-5">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="h-3 w-3 rounded-full bg-rose-400/80 shrink-0" />
+                <span className="h-3 w-3 rounded-full bg-amber-400/80 shrink-0" />
+                <span className="h-3 w-3 rounded-full bg-emerald-400/80 shrink-0" />
+                <span className="ml-2 truncate text-xs font-bold text-secondary-400 font-mono max-w-[140px] min-[400px]:max-w-none">
                   futurewings.io/workspace/student
                 </span>
               </div>

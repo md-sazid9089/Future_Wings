@@ -111,7 +111,7 @@ export default function Destinations({ onViewDestination }) {
               }) => (
                 <li
                   key={name}
-                  className="group relative flex flex-col justify-between rounded-3xl border border-secondary-200/80 bg-surface p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-300 hover:bg-white hover:shadow-xl hover:shadow-secondary-900/5"
+                  className="group relative flex flex-col justify-between rounded-3xl border border-secondary-200/80 bg-surface p-4 sm:p-6 lg:p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-300 hover:bg-white hover:shadow-xl hover:shadow-secondary-900/5"
                 >
                   <div>
                     {/* Header: Flag, Name, Tier Badge */}

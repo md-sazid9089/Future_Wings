@@ -126,7 +126,7 @@ export default function Applications({ session, onNavigate }) {
       {/* Header Banner */}
       <header
         data-tour="applications-header"
-        className="relative overflow-hidden rounded-3xl border border-secondary-200 bg-gradient-to-r from-secondary-950 via-secondary-900 to-secondary-950 p-6 sm:p-8 text-white shadow-xl"
+        className="relative overflow-hidden rounded-3xl border border-secondary-200 bg-gradient-to-r from-secondary-950 via-secondary-900 to-secondary-950 p-4 sm:p-8 text-white shadow-xl"
       >
         <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary-500/15 blur-3xl" />
         <div className="max-w-3xl relative z-10">
@@ -181,10 +181,10 @@ export default function Applications({ session, onNavigate }) {
 
       {/* Quick Add Program to Tracker */}
       {available.length > 0 && (
-        <form className="rounded-3xl border border-secondary-200/80 bg-white p-5 sm:p-6 shadow-sm flex flex-col sm:flex-row gap-3 items-stretch sm:items-center" onSubmit={create}>
+        <form className="rounded-3xl border border-secondary-200/80 bg-white p-4 sm:p-6 shadow-sm flex flex-col sm:flex-row gap-3 items-stretch sm:items-center" onSubmit={create}>
           <label className="sr-only" htmlFor="application-program">Program</label>
           <select
-            className="flex-1 rounded-2xl border border-secondary-200 px-4 py-2.5 text-xs font-medium text-secondary-950 outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 shadow-inner bg-white"
+            className="flex-1 rounded-2xl border border-secondary-200 px-4 py-2.5 text-xs font-medium text-secondary-950 outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 shadow-inner bg-white min-h-[44px]"
             id="application-program"
             onChange={(event) => setProgramId(event.target.value)}
             value={programId}
@@ -196,7 +196,7 @@ export default function Applications({ session, onNavigate }) {
               </option>
             ))}
           </select>
-          <button className="rounded-2xl bg-primary-500 hover:bg-primary-600 text-white px-6 py-2.5 text-xs font-extrabold shadow-md shadow-primary-500/25 transition disabled:opacity-50" disabled={busy || !programId} type="submit">
+          <button className="w-full sm:w-auto inline-flex items-center justify-center min-h-[44px] rounded-2xl bg-primary-500 hover:bg-primary-600 text-white px-6 py-2.5 text-xs font-extrabold shadow-md shadow-primary-500/25 transition disabled:opacity-50" disabled={busy || !programId} type="submit">
             + Track Application
           </button>
         </form>
@@ -255,7 +255,7 @@ export default function Applications({ session, onNavigate }) {
             {visibleApplications.map((app) => (
               <div key={app.applicationId ?? app.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-6 py-4 hover:bg-surface/50 transition">
                 <div>
-                  <h3 className="font-bold text-secondary-950 text-base">{app.programName}</h3>
+                  <h3 className="font-bold text-secondary-950 text-base break-words">{app.programName}</h3>
                   <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-secondary-500 font-medium">
                     <span>{app.universityName}</span>
                     {app.country && (
@@ -285,7 +285,7 @@ export default function Applications({ session, onNavigate }) {
                   
                   <select
                     aria-label={`Change status for ${app.programName}`}
-                    className="rounded-xl border border-secondary-200 bg-white px-3 py-1.5 text-xs font-semibold text-secondary-800 outline-none focus:border-primary-500 shadow-sm"
+                    className="min-h-[44px] rounded-xl border border-secondary-200 bg-white px-3 py-1.5 text-xs font-semibold text-secondary-800 outline-none focus:border-primary-500 shadow-sm"
                     disabled={busy}
                     onChange={(event) => updateStatus(app.applicationId ?? app.id, event.target.value)}
                     value={app.status}
@@ -296,7 +296,7 @@ export default function Applications({ session, onNavigate }) {
                   </select>
 
                   <button
-                    className="rounded-xl border border-secondary-200 px-3 py-1.5 text-xs font-semibold text-danger-600 hover:bg-danger-50 transition disabled:opacity-50"
+                    className="inline-flex items-center justify-center min-h-[44px] rounded-xl border border-secondary-200 px-3.5 py-1.5 text-xs font-semibold text-danger-600 hover:bg-danger-50 transition disabled:opacity-50"
                     disabled={busy}
                     onClick={() => remove(app.applicationId ?? app.id)}
                     type="button"

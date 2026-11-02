@@ -709,7 +709,7 @@ export default function AgentPanel({ session }) {
                         setCurrentPage(1)
                       }}
                       placeholder="Search candidate, email, program, GPA..."
-                      className="w-64 sm:w-72 rounded-xl border border-secondary-300 bg-white px-3.5 py-1.5 text-xs text-secondary-900 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 shadow-inner"
+                      className="w-full min-[420px]:w-64 sm:w-72 rounded-xl border border-secondary-300 bg-white px-3.5 py-1.5 text-xs text-secondary-900 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 shadow-inner"
                     />
                     {searchQuery && (
                       <button
@@ -1297,7 +1297,7 @@ export default function AgentPanel({ session }) {
       {/* STUDENT DOSSIER INSPECTION DRAWER / MODAL */}
       {inspectingApp && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-secondary-950/60 p-4 backdrop-blur-sm animate-fadeIn">
-          <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-secondary-200">
+          <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl bg-white p-4 sm:p-8 shadow-2xl border border-secondary-200">
             <button
               onClick={() => setInspectingApp(null)}
               className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full bg-secondary-100 text-secondary-600 hover:bg-secondary-200 text-sm font-bold"
@@ -1433,7 +1433,7 @@ export default function AgentPanel({ session }) {
       {/* EMAIL TRANSMISSION MODAL */}
       {emailModalApp && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-secondary-950/60 p-4 backdrop-blur-sm animate-fadeIn">
-          <div className="w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-secondary-200">
+          <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl bg-white p-4 sm:p-8 shadow-2xl border border-secondary-200">
             <h3 className="text-lg font-extrabold text-secondary-950">
               Transmit Candidate Dispatch
             </h3>
@@ -1486,7 +1486,7 @@ export default function AgentPanel({ session }) {
       {/* ADD UNIVERSITY MODAL */}
       {showAddUniversity && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-secondary-950/60 p-4 backdrop-blur-sm animate-fadeIn">
-          <div className="w-full max-w-md rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-secondary-200">
+          <div className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-3xl bg-white p-4 sm:p-8 shadow-2xl border border-secondary-200">
             <h3 className="text-lg font-extrabold text-secondary-950">
               Register Territory Institution
             </h3>
@@ -1544,7 +1544,7 @@ export default function AgentPanel({ session }) {
       {/* ADD PROGRAM MODAL */}
       {showAddProgram && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-secondary-950/60 p-4 backdrop-blur-sm animate-fadeIn">
-          <div className="w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-secondary-200">
+          <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl bg-white p-4 sm:p-8 shadow-2xl border border-secondary-200">
             <h3 className="text-lg font-extrabold text-secondary-950">
               Publish Academic Program
             </h3>
@@ -1677,7 +1677,7 @@ export default function AgentPanel({ session }) {
       {/* ADD SCHOLARSHIP MODAL */}
       {showAddScholarship && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-secondary-950/60 p-4 backdrop-blur-sm animate-fadeIn">
-          <div className="w-full max-w-md rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-secondary-200">
+          <div className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-3xl bg-white p-4 sm:p-8 shadow-2xl border border-secondary-200">
             <h3 className="text-lg font-extrabold text-secondary-950">
               Publish Territory Scholarship
             </h3>

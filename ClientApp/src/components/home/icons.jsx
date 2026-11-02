@@ -23,12 +23,13 @@ function Icon({ children, className = 'h-5 w-5', ...rest }) {
   )
 }
 
-export function LogoMark({ className = 'h-6 w-6' }) {
+export function LogoMark({ className = 'h-6 w-auto' }) {
   return (
-    <Icon className={className}>
-      <path d="M2.5 12.5 21 4l-5.5 16.5-3.2-6.6z" />
-      <path d="m12.3 13.9 8.7-9.9" />
-    </Icon>
+    <img
+      src="/logo.png"
+      alt="AIgnite Buildathon Logo"
+      className={`${className} object-contain`}
+    />
   )
 }
 

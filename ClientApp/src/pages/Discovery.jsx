@@ -585,22 +585,22 @@ export default function Discovery({ session, onNavigate }) {
           <div className="grid gap-4 lg:grid-cols-2">
             {displayedPrograms.map((item) => (
               <article
-                className="group rounded-3xl border border-secondary-200/80 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-xl flex flex-col justify-between"
+                className="group rounded-3xl border border-secondary-200/80 bg-white p-5 sm:p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-xl flex flex-col justify-between"
                 key={item.id}
               >
                 <div>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
+                  <div className="flex flex-col min-[480px]:flex-row min-[480px]:items-start justify-between gap-3">
+                    <div className="min-w-0 flex-1">
                       <p className="text-xs font-bold uppercase tracking-wider text-primary-600">
                         {item.country} · {item.city}
                       </p>
-                      <h3 className="mt-1 text-lg font-black text-secondary-950 group-hover:text-primary-600 transition">
+                      <h3 className="mt-1 text-lg font-black text-secondary-950 group-hover:text-primary-600 transition break-words">
                         {item.name}
                       </h3>
                       <p className="mt-0.5 text-xs font-semibold text-secondary-500">{item.university}</p>
                     </div>
 
-                    <div className="flex shrink-0 items-center gap-2">
+                    <div className="flex flex-wrap shrink-0 items-center gap-2 self-start">
                       {typeof item.aiScore === 'number' && (
                         <span className="rounded-lg bg-primary-50 border border-primary-200 px-2.5 py-1 text-xs font-extrabold text-primary-700">
                           {Math.round(item.aiScore * 100)}% fit
@@ -651,12 +651,12 @@ export default function Discovery({ session, onNavigate }) {
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-secondary-100 flex flex-wrap items-center justify-between gap-2.5">
+                <div className="mt-4 pt-3 border-t border-secondary-100 flex flex-col min-[420px]:flex-row items-stretch min-[420px]:items-center justify-between gap-2.5">
                   <button
                     type="button"
                     data-testid={`view-details-${item.id}`}
                     onClick={() => setSelectedProgram(item)}
-                    className={`inline-flex items-center gap-1.5 rounded-xl border border-secondary-200 bg-white hover:bg-secondary-50 px-3 py-1.5 text-xs font-bold text-secondary-700 hover:text-secondary-900 transition ${FOCUS}`}
+                    className={`inline-flex items-center justify-center min-h-[44px] gap-1.5 rounded-xl border border-secondary-200 bg-white hover:bg-secondary-50 px-3.5 py-2 text-xs font-bold text-secondary-700 hover:text-secondary-900 transition ${FOCUS}`}
                   >
                     <span>View Details</span>
                     <span aria-hidden="true">→</span>
@@ -667,7 +667,7 @@ export default function Discovery({ session, onNavigate }) {
                       type="button"
                       data-testid={`track-program-btn-${item.id}`}
                       onClick={() => onNavigate?.('Applications')}
-                      className={`inline-flex items-center gap-1.5 rounded-xl border border-success-200 bg-success-50 hover:bg-success-100 px-3.5 py-1.5 text-xs font-bold text-success-800 transition ${FOCUS}`}
+                      className={`inline-flex items-center justify-center min-h-[44px] gap-1.5 rounded-xl border border-success-200 bg-success-50 hover:bg-success-100 px-3.5 py-2 text-xs font-bold text-success-800 transition ${FOCUS}`}
                       title="View in Application Tracker"
                     >
                       <span className="h-2 w-2 rounded-full bg-success-600" aria-hidden="true" />
@@ -682,7 +682,7 @@ export default function Discovery({ session, onNavigate }) {
                       data-testid={`track-program-btn-${item.id}`}
                       disabled={trackingIds.has(item.id)}
                       onClick={() => trackProgram(item)}
-                      className={`inline-flex items-center gap-1.5 rounded-xl bg-primary-500 hover:bg-primary-600 px-3.5 py-1.5 text-xs font-extrabold text-white shadow-sm shadow-primary-500/20 transition disabled:opacity-60 ${FOCUS}`}
+                      className={`inline-flex items-center justify-center min-h-[44px] gap-1.5 rounded-xl bg-primary-500 hover:bg-primary-600 px-3.5 py-2 text-xs font-extrabold text-white shadow-sm shadow-primary-500/20 transition disabled:opacity-60 ${FOCUS}`}
                     >
                       {trackingIds.has(item.id) ? (
                         <>

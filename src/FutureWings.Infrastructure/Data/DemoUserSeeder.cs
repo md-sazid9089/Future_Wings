@@ -88,7 +88,7 @@ public static class DemoUserSeeder
                 Email = demoEmail,
                 PasswordHash = passwordHash,
                 Role = "Student",
-                SubscriptionTier = "Pro",
+                SubscriptionTier = "Premium",
                 SubscriptionRenewsAt = DateTimeOffset.UtcNow.AddMonths(1),
                 StripeCustomerId = "cus_demo_alex_morgan",
                 HasSeededDeadlines = true,
@@ -107,7 +107,7 @@ public static class DemoUserSeeder
         }
         else
         {
-            demoUser.SubscriptionTier = "Pro";
+            demoUser.SubscriptionTier = "Premium";
             demoUser.SubscriptionRenewsAt = DateTimeOffset.UtcNow.AddMonths(1);
             if (demoUser.Profile is null)
             {

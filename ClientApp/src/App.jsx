@@ -246,11 +246,8 @@ function App() {
   }, [appToast])
 
   const features = subscription?.features ?? []
-  const isLocked = (page) => {
-    if (session?.role === 'Admin' || session?.role === 'Agent') return false
-    const required = PAGE_FEATURE[page]
-    return Boolean(required) && !features.includes(required)
-  }
+  // All features are unlocked across all roles and tiers
+  const isLocked = () => false
 
   const handleAuthenticated = (nextSession) => {
     saveSession(nextSession)
@@ -274,8 +271,7 @@ function App() {
     setSession(null)
     setSubscription(null)
     setProfile(null)
-    setActivePage('Home')
-    setMenuOpen(false)
+    goTo('Home')
   }
 
   useEffect(() => {
@@ -435,15 +431,7 @@ function App() {
       <aside className="sticky top-0 z-30 border-b border-secondary-200/80 bg-white px-3 py-3 lg:static lg:flex lg:min-h-screen lg:flex-col lg:border-b-0 lg:border-r lg:py-4">
         <div className="flex items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-2.5 px-1">
-            <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[13px] font-bold text-white ${
-              session.role === 'Admin'
-                ? 'bg-purple-600'
-                : session.role === 'Agent'
-                ? 'bg-emerald-600'
-                : 'bg-primary-500'
-            }`}>
-              FW
-            </div>
+            <img src="/logo.png" alt="AIgnite Buildathon Logo" className="h-8 w-auto max-w-[85px] shrink-0 object-contain rounded-md" />
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold tracking-tight text-secondary-950">FutureWings</p>
               <p className={`truncate text-[11px] font-bold ${
@@ -482,7 +470,7 @@ function App() {
                 <p className="px-2 pb-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-secondary-400">
                   {group.label}
                 </p>
-                <ul className="grid grid-cols-2 gap-0.5 sm:grid-cols-3 lg:grid-cols-1">
+                <ul className="grid grid-cols-1 min-[360px]:grid-cols-2 gap-0.5 sm:grid-cols-3 lg:grid-cols-1">
                   {group.items.map((page) => {
                     const active = activePage === page
                     const locked = isLocked(page)
@@ -612,7 +600,7 @@ function App() {
         </div>
       </aside>
 
-      <main className="p-4 sm:p-6 lg:p-8 xl:p-10">
+      <main className="min-w-0 max-w-full overflow-x-clip p-3.5 sm:p-6 lg:p-8 xl:p-10">
         {/* Workspace Incomplete Profile Notice Banner */}
         {isStudent && activePage !== 'Profile' && (
           <ProfileIncompleteBanner

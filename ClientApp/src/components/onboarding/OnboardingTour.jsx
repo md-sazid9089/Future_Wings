@@ -277,7 +277,7 @@ export default function OnboardingTour({
 
       {/* Popover Card */}
       <div
-        className="rounded-3xl border border-secondary-200/90 bg-white shadow-2xl shadow-secondary-950/25 p-6 sm:p-7 flex flex-col justify-between transition-all duration-200"
+        className="rounded-3xl border border-secondary-200/90 bg-white shadow-2xl shadow-secondary-950/25 p-4 sm:p-7 max-h-[92vh] overflow-y-auto flex flex-col justify-between transition-all duration-200"
         ref={popoverRef}
         style={popoverStyle}
         onClick={(e) => e.stopPropagation()}

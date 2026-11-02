@@ -125,7 +125,7 @@ export default function VisaCheck({ session }) {
       {/* Header Banner */}
       <header
         data-tour="visa-check-header"
-        className="relative overflow-hidden rounded-3xl border border-secondary-200 bg-gradient-to-r from-secondary-950 via-secondary-900 to-secondary-950 p-6 text-white shadow-xl sm:p-8"
+        className="relative overflow-hidden rounded-3xl border border-secondary-200 bg-gradient-to-r from-secondary-950 via-secondary-900 to-secondary-950 p-4 text-white shadow-xl sm:p-8"
       >
         <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary-500/15 blur-3xl" />
         <div className="max-w-3xl relative z-10">
@@ -155,7 +155,7 @@ export default function VisaCheck({ session }) {
             key={item.title}
             type="button"
             onClick={() => setStep(index)}
-            className={`rounded-2xl border p-4 text-left transition shadow-sm ${
+            className={`rounded-2xl border p-3 sm:p-4 text-left transition shadow-sm ${
               index === step
                 ? 'border-primary-500 bg-white ring-2 ring-primary-200'
                 : index < step
@@ -183,7 +183,7 @@ export default function VisaCheck({ session }) {
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
         {/* Form Wizard */}
-        <form className="rounded-3xl border border-secondary-200/80 bg-white p-6 sm:p-8 shadow-sm space-y-6" onSubmit={evaluate}>
+        <form className="rounded-3xl border border-secondary-200/80 bg-white p-4 sm:p-8 shadow-sm space-y-6" onSubmit={evaluate}>
           <div className="flex items-center justify-between border-b border-secondary-100 pb-4">
             <h2 className="text-base font-extrabold text-secondary-950">{steps[step].title} Details</h2>
             <span className="text-xs font-bold text-secondary-500">Step {step + 1} of {steps.length}</span>
@@ -257,9 +257,9 @@ export default function VisaCheck({ session }) {
             </div>
           )}
 
-          <div className="flex justify-between gap-3 border-t border-secondary-100 pt-5">
+          <div className="flex flex-col min-[380px]:flex-row justify-between gap-3 border-t border-secondary-100 pt-5">
             <button
-              className={`rounded-2xl border border-secondary-300 px-5 py-2.5 text-xs font-bold text-secondary-700 hover:bg-secondary-50 disabled:opacity-40 transition ${FOCUS}`}
+              className={`inline-flex items-center justify-center min-h-[44px] rounded-2xl border border-secondary-300 px-5 py-2.5 text-xs font-bold text-secondary-700 hover:bg-secondary-50 disabled:opacity-40 transition ${FOCUS}`}
               disabled={step === 0 || loading}
               onClick={() => setStep(step - 1)}
               type="button"
@@ -267,7 +267,7 @@ export default function VisaCheck({ session }) {
               Previous Step
             </button>
             <button
-              className={`rounded-2xl bg-primary-500 hover:bg-primary-600 px-6 py-2.5 text-xs font-extrabold text-white shadow-md shadow-primary-500/25 transition disabled:opacity-50 ${FOCUS}`}
+              className={`inline-flex items-center justify-center min-h-[44px] rounded-2xl bg-primary-500 hover:bg-primary-600 px-6 py-2.5 text-xs font-extrabold text-white shadow-md shadow-primary-500/25 transition disabled:opacity-50 ${FOCUS}`}
               disabled={loading}
               type="submit"
             >
@@ -285,7 +285,7 @@ export default function VisaCheck({ session }) {
         </form>
 
         {/* Readiness Report Card */}
-        <section aria-live="polite" className="rounded-3xl border border-secondary-200/80 bg-white p-6 sm:p-8 shadow-sm space-y-6">
+        <section aria-live="polite" className="rounded-3xl border border-secondary-200/80 bg-white p-4 sm:p-8 shadow-sm space-y-6">
           <div className="flex items-center justify-between border-b border-secondary-100 pb-3">
             <h2 className="text-base font-extrabold text-secondary-950">Readiness Risk Analysis</h2>
             {result && (

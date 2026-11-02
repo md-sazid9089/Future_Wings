@@ -680,7 +680,7 @@ export default function Admin({ session, initialTab = 'Overview' }) {
                       value={txSearch}
                       onChange={(e) => setTxSearch(e.target.value)}
                       placeholder="Search student email or reference ID..."
-                      className="w-72 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs text-slate-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                      className="w-full sm:w-72 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs text-slate-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
                     />
                   </div>
 
@@ -921,7 +921,7 @@ export default function Admin({ session, initialTab = 'Overview' }) {
                     value={appSearch}
                     onChange={(e) => { setAppSearch(e.target.value); setAppPage(1); }}
                     placeholder="Search by student, program or university..."
-                    className="w-72 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs text-slate-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                    className="w-full sm:w-72 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs text-slate-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
                   />
                 </div>
 
@@ -1027,7 +1027,7 @@ export default function Admin({ session, initialTab = 'Overview' }) {
                     value={catalogSearch}
                     onChange={(e) => { setCatalogSearch(e.target.value); setCatalogPage(1); }}
                     placeholder="Search program, university, country..."
-                    className="w-72 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs text-slate-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                    className="w-full sm:w-72 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs text-slate-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
                   />
                 </div>
 
@@ -1134,7 +1134,7 @@ export default function Admin({ session, initialTab = 'Overview' }) {
       {/* INSPECTION MODAL / DRAWER */}
       {inspectedUser && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-sm animate-fadeIn">
-          <div className="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl border border-slate-200">
+          <div className="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
             <div className="bg-slate-900 p-6 text-white flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className={`flex h-10 w-10 items-center justify-center rounded-xl font-bold text-sm border ${ROLE_COLORS[inspectedUser.role]}`}>

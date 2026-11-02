@@ -113,7 +113,7 @@ export default function Documents({ session }) {
   return (
     <div className="mx-auto max-w-5xl space-y-8 pb-16">
       {/* Header Banner */}
-      <header className="relative overflow-hidden rounded-3xl border border-secondary-200 bg-gradient-to-r from-secondary-950 via-secondary-900 to-secondary-950 p-6 sm:p-8 text-white shadow-xl">
+      <header className="relative overflow-hidden rounded-3xl border border-secondary-200 bg-gradient-to-r from-secondary-950 via-secondary-900 to-secondary-950 p-4 sm:p-8 text-white shadow-xl">
         <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary-500/15 blur-3xl" />
         <div className="max-w-3xl relative z-10">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-500/20 border border-primary-400/30 px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-primary-300">
@@ -137,7 +137,7 @@ export default function Documents({ session }) {
 
       {/* Upload Dropzone */}
       <form
-        className={`rounded-3xl border-2 border-dashed p-8 text-center transition ${
+        className={`rounded-3xl border-2 border-dashed p-4 sm:p-8 text-center transition ${
           dragOver
             ? 'border-primary-500 bg-primary-50/50'
             : 'border-secondary-300 bg-white hover:border-primary-300'
@@ -207,14 +207,14 @@ export default function Documents({ session }) {
 
                 <div className="flex items-center gap-2">
                   <button
-                    className="rounded-xl bg-secondary-100 hover:bg-primary-50 hover:text-primary-700 px-3.5 py-1.5 text-xs font-bold text-secondary-700 transition"
+                    className="inline-flex items-center justify-center min-h-[44px] rounded-xl bg-secondary-100 hover:bg-primary-50 hover:text-primary-700 px-3.5 py-2 text-xs font-bold text-secondary-700 transition"
                     onClick={() => download(doc)}
                     type="button"
                   >
                     Download
                   </button>
                   <button
-                    className="rounded-xl border border-secondary-200 px-3.5 py-1.5 text-xs font-semibold text-danger-600 hover:bg-danger-50 transition disabled:opacity-50"
+                    className="inline-flex items-center justify-center min-h-[44px] rounded-xl border border-secondary-200 px-3.5 py-2 text-xs font-semibold text-danger-600 hover:bg-danger-50 transition disabled:opacity-50"
                     disabled={busy}
                     onClick={() => remove(doc.id)}
                     type="button"

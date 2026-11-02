@@ -162,14 +162,14 @@ export default function ProgramDetailsModal({
     <div
       aria-labelledby="program-details-title"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-secondary-950/70 p-4 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-secondary-950/70 p-2 sm:p-4 backdrop-blur-sm animate-fadeIn"
       data-testid="program-details-modal"
       onMouseDown={handleBackdropClick}
       role="dialog"
     >
       <div className="relative flex max-h-[90vh] w-full max-w-3xl flex-col rounded-3xl border border-secondary-200 bg-white shadow-2xl overflow-hidden">
         {/* Modal Top Header */}
-        <div className="flex items-start justify-between border-b border-secondary-100 bg-surface px-6 py-4">
+        <div className="flex items-start justify-between border-b border-secondary-100 bg-surface px-4 sm:px-6 py-3.5 sm:py-4">
           <div className="min-w-0 pr-4">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-100 px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-primary-800">
               Program Details
@@ -194,7 +194,7 @@ export default function ProgramDetailsModal({
         </div>
 
         {/* Modal Body */}
-        <div className="overflow-y-auto px-6 py-6 space-y-6">
+        <div className="overflow-y-auto px-4 sm:px-6 py-4 sm:py-6 space-y-6">
           {loading && !details && (
             <div className="py-16 text-center" data-testid="details-loading-state">
               <div className="inline-block h-8 w-8 animate-spin rounded-full border-3 border-primary-500 border-t-transparent" />
@@ -377,9 +377,9 @@ export default function ProgramDetailsModal({
         </div>
 
         {/* Modal Bottom Action Bar */}
-        <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-secondary-100 bg-surface px-6 py-4">
+        <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-secondary-100 bg-surface px-4 sm:px-6 py-3.5 sm:py-4">
           <button
-            className={`rounded-xl border border-secondary-300 px-4 py-2.5 text-xs font-bold text-secondary-700 hover:bg-secondary-100 transition ${FOCUS}`}
+            className={`w-full sm:w-auto inline-flex items-center justify-center min-h-[44px] rounded-xl border border-secondary-300 px-4 py-2.5 text-xs font-bold text-secondary-700 hover:bg-secondary-100 transition ${FOCUS}`}
             data-testid="return-search-btn"
             onClick={onClose}
             type="button"
@@ -388,10 +388,10 @@ export default function ProgramDetailsModal({
           </button>
 
           {details && !notFound && (
-            <div className="flex flex-wrap items-center gap-2.5">
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 w-full sm:w-auto">
               {/* Shortlist Bookmark Toggle */}
               <button
-                className={`inline-flex items-center gap-1.5 rounded-xl border px-4 py-2.5 text-xs font-bold transition ${
+                className={`inline-flex items-center justify-center min-h-[44px] rounded-xl border px-4 py-2.5 text-xs font-bold transition ${
                   details.isSaved
                     ? 'border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100'
                     : 'border-secondary-300 bg-white text-secondary-700 hover:border-primary-300 hover:text-primary-600'
@@ -409,7 +409,7 @@ export default function ProgramDetailsModal({
               {/* Add to Application Tracking */}
               {details.isTracked ? (
                 <button
-                  className={`inline-flex items-center gap-1.5 rounded-xl border border-success-200 bg-success-50 px-4 py-2.5 text-xs font-bold text-success-800 hover:bg-success-100 transition ${FOCUS}`}
+                  className={`inline-flex items-center justify-center min-h-[44px] gap-1.5 rounded-xl border border-success-200 bg-success-50 px-4 py-2.5 text-xs font-bold text-success-800 hover:bg-success-100 transition ${FOCUS}`}
                   data-testid="details-view-applications-btn"
                   onClick={() => {
                     onClose?.()
@@ -425,7 +425,7 @@ export default function ProgramDetailsModal({
                 </button>
               ) : (
                 <button
-                  className={`inline-flex items-center gap-1.5 rounded-xl bg-primary-500 hover:bg-primary-600 px-5 py-2.5 text-xs font-extrabold text-white shadow-md shadow-primary-500/20 transition disabled:opacity-50 ${FOCUS}`}
+                  className={`inline-flex items-center justify-center min-h-[44px] gap-1.5 rounded-xl bg-primary-500 hover:bg-primary-600 px-5 py-2.5 text-xs font-extrabold text-white shadow-md shadow-primary-500/20 transition disabled:opacity-50 ${FOCUS}`}
                   data-testid="details-add-application-btn"
                   disabled={applying}
                   onClick={handleAddToApplications}

@@ -24,9 +24,9 @@ export default function AuthLayout({ title, subtitle, onBackToHome, children }) 
           </div>
         )}
 
-        <section className="w-full rounded-2xl border border-secondary-200 bg-white p-8 shadow-sm">
+        <section className="w-full rounded-2xl border border-secondary-200 bg-white p-5 sm:p-8 shadow-sm">
           <div className="mb-8 text-center">
-            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-500 font-bold text-white shadow-sm">FW</div>
+            <div className="mx-auto mb-4 flex items-center justify-center"><img src="/logo.png" alt="AIgnite Buildathon Logo" className="h-12 sm:h-14 w-auto max-w-[200px] object-contain rounded-xl" /></div>
             <h1 className="text-2xl font-bold text-secondary-950">{title}</h1>
             <p className="mt-2 text-sm text-secondary-600">{subtitle}</p>
           </div>

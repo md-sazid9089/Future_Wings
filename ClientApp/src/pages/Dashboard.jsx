@@ -140,7 +140,7 @@ export default function Dashboard({ session, onNavigate }) {
   return (
     <div className="mx-auto max-w-6xl space-y-8 pb-16">
       {/* Personalized Welcome Header Banner */}
-      <header className="relative overflow-hidden rounded-3xl border border-secondary-200 bg-gradient-to-r from-secondary-950 via-secondary-900 to-secondary-950 p-6 sm:p-8 text-white shadow-xl">
+      <header className="relative overflow-hidden rounded-3xl border border-secondary-200 bg-gradient-to-r from-secondary-950 via-secondary-900 to-secondary-950 p-4 sm:p-8 text-white shadow-xl">
         <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary-500/15 blur-3xl" />
         <div className="flex flex-wrap items-center justify-between gap-6 relative z-10">
           <div>

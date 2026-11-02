@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRightIcon, CloseIcon, LogoMark, MenuIcon } from './icons.jsx'
+import { ArrowRightIcon, CloseIcon, MenuIcon } from './icons.jsx'
 import { setReturnTo } from '../../lib/navigationStorage.js'
 
 const navLinks = [
@@ -81,9 +81,11 @@ export default function SiteHeader({
           className="flex shrink-0 items-center gap-2.5 rounded-xl text-primary-500 transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
           href="#home"
         >
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-primary-600 via-primary-500 to-amber-500 text-white shadow-sm shadow-primary-500/20">
-            <LogoMark className="h-5 w-5" />
-          </div>
+          <img
+            src="/logo.png"
+            alt="AIgnite Buildathon Logo"
+            className="h-8 sm:h-9 w-auto max-w-[130px] sm:max-w-[160px] object-contain rounded-lg"
+          />
           <div className="flex items-baseline gap-1.5">
             <span className="text-lg font-black tracking-tight text-secondary-950">FutureWings</span>
             <span className="rounded-md bg-primary-50 px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-primary-700 ring-1 ring-primary-500/20">
@@ -193,7 +195,7 @@ export default function SiteHeader({
 
             <div className="mt-6 border-t border-secondary-100 pt-5 space-y-2">
               <button
-                className="w-full rounded-xl border border-secondary-200 py-2.5 text-sm font-bold text-secondary-800 transition hover:bg-secondary-50"
+                className="w-full inline-flex items-center justify-center min-h-[44px] rounded-xl border border-secondary-200 py-2.5 text-sm font-bold text-secondary-800 transition hover:bg-secondary-50"
                 onClick={() => {
                   setOpen(false)
                   onSignIn?.()
@@ -203,7 +205,7 @@ export default function SiteHeader({
                 Sign In
               </button>
               <button
-                className="w-full rounded-xl bg-primary-500 py-2.5 text-sm font-extrabold text-white shadow-md transition hover:bg-primary-600"
+                className="w-full inline-flex items-center justify-center min-h-[44px] rounded-xl bg-primary-500 py-2.5 text-sm font-extrabold text-white shadow-md transition hover:bg-primary-600"
                 onClick={() => {
                   setOpen(false)
                   onSignUp?.()
